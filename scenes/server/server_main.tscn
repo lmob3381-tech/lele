@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8d3a1m4in003"]
+
+[ext_resource type="Script" path="res://scripts/server/server_main.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/server/match_manager.gd" id="2_script"]
+
+[node name="ServerRoot" type="Node"]
+script = ExtResource("1_script")
+
+[node name="MatchManager" type="Node" parent="."]
+script = ExtResource("2_script")

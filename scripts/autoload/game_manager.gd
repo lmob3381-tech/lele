@@ -24,6 +24,13 @@ signal game_error(error_message: String)
 var current_state: GameState = GameState.MAIN_MENU
 var build_version: String = "0.1.0"
 
+func _ready() -> void:
+	if ""--server"" in OS.get_cmdline_args() or DisplayServer.get_name() == ""headless"":
+		print(""[GameManager] Detected server mode. Switching to server_main.tscn..."")
+		get_tree().change_scene_to_file(""res://scenes/server/server_main.tscn"")
+		return
+
+
 var player_data: Dictionary = {
 	"name": "Survivor",
 	"id": 1,
@@ -62,3 +69,4 @@ func _get_state_name(state: GameState) -> String:
 	return GameState.keys()[state]
 
 var last_mission_result: Dictionary = {}
+

@@ -1,0 +1,174 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scenes/settings/settings_menu.gd" id="1_ssm"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ssm")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0588235, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS / PENGATURAN"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="GraphicsLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+text = "Graphics"
+
+[node name="QualityOption" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+text = "Audio"
+
+[node name="MasterVol" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/MasterVol"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/MasterVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="MusicVol" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="MusicCheck" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/MusicVol"]
+layout_mode = 2
+button_pressed = true
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/MusicVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="SFXVol" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="SFXCheck" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/SFXVol"]
+layout_mode = 2
+button_pressed = true
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/SFXVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+text = "Controls"
+
+[node name="Sensitivity" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/Sensitivity"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Camera Sensitivity"
+
+[node name="SensSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="InvertCamera" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+text = "Invert Camera Y"
+
+[node name="Vibration" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+button_pressed = true
+text = "Vibration"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="LanguageBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/LanguageBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Language"
+
+[node name="LanguageOption" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer/SettingsList/LanguageBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BackBtn" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK / KEMBALI"
+
+[node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESET DEFAULTS"
+
+[node name="SaveBtn" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE & BACK"

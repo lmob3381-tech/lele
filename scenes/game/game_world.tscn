@@ -1,0 +1,162 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="Script" path="res://scenes/game/game_world.gd" id="1_gwg"]
+[ext_resource type="PackedScene" path="res://scenes/game/hud.tscn" id="2_hud"]
+
+[sub_resource type="Environment" id="Environment_horror"]
+background_mode = 1
+background_color = Color(0.01, 0.01, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.05, 0.05, 0.07, 1)
+fog_enabled = true
+fog_light_color = Color(0.05, 0.05, 0.07, 1)
+fog_density = 0.05
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ext"]
+size = Vector3(4, 3, 4)
+
+[node name="GameWorld" type="Node3D"]
+script = ExtResource("1_gwg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_horror")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 10, 0)
+light_color = Color(0.3, 0.35, 0.5, 1)
+light_energy = 0.2
+shadow_enabled = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="Environment" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="Ceiling" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="OuterWall_N" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -25)
+use_collision = true
+size = Vector3(50, 3, 1)
+
+[node name="OuterWall_S" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 25)
+use_collision = true
+size = Vector3(50, 3, 1)
+
+[node name="OuterWall_E" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 50)
+
+[node name="OuterWall_W" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 50)
+
+[node name="InnerWall_1" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 30)
+
+[node name="InnerWall_2" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, -10)
+use_collision = true
+size = Vector3(20, 3, 1)
+
+[node name="InnerWall_3" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 10)
+use_collision = true
+size = Vector3(1, 3, 20)
+
+[node name="Door_1" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 10)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="Door_2" type="CSGBox3D" parent="NavigationRegion3D/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, -10)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D_1" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+light_color = Color(1, 0.6, 0.3, 1)
+light_energy = 0.5
+omni_range = 10.0
+
+[node name="OmniLight3D_2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.5, 18)
+light_color = Color(1, 0.6, 0.3, 1)
+light_energy = 0.5
+omni_range = 10.0
+
+[node name="OmniLight3D_3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.5, -18)
+light_color = Color(1, 0.6, 0.3, 1)
+light_energy = 0.5
+omni_range = 10.0
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="PlayerSpawn_1" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="PlayerSpawn_2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
+
+[node name="PlayerSpawn_3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 2)
+
+[node name="PlayerSpawn_4" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+
+[node name="HorrorSpawner" type="Node3D" parent="."]
+
+[node name="PocongSpawn_1" type="Marker3D" parent="HorrorSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, 20)
+
+[node name="PocongSpawn_2" type="Marker3D" parent="HorrorSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, -20)
+
+[node name="PocongSpawn_3" type="Marker3D" parent="HorrorSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, -20)
+
+[node name="PocongSpawn_4" type="Marker3D" parent="HorrorSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, 20)
+
+[node name="PocongSpawn_5" type="Marker3D" parent="HorrorSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, 0)
+
+[node name="ExtractionPoint" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExtractionPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_ext")
+
+[node name="CollectibleSpawns" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="CollectibleSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.5, 15)
+
+[node name="Marker3D2" type="Marker3D" parent="CollectibleSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, -15)
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource("2_hud")]
+
+[node name="TouchControls" type="CanvasLayer" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray()
+spawn_path = NodePath("..")

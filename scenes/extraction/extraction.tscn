@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scenes/extraction/extraction.gd" id="1_see"]
+
+[node name="Extraction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_see")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0588235, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ResultTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MISI SELESAI"
+horizontal_alignment = 1
+
+[node name="StatsBox" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/StatsBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimeLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsBox/VBoxContainer"]
+layout_mode = 2
+text = "Time Survived: 05:00"
+
+[node name="ItemsLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsBox/VBoxContainer"]
+layout_mode = 2
+text = "Items Collected: 5/5"
+
+[node name="DamageLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsBox/VBoxContainer"]
+layout_mode = 2
+text = "Damage Taken: 20"
+
+[node name="EncountersLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsBox/VBoxContainer"]
+layout_mode = 2
+text = "Pocong Encountered: 3"
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="RewardLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+text = "+150 XP   +50 Coins"
+horizontal_alignment = 1
+
+[node name="ReturnBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "KEMBALI KE LOBBY"

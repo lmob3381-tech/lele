@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scenes/game/hud.gd" id="1_shd"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shd")
+mouse_filter = 2
+
+[node name="JumpscareOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Crosshair" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopLeft" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 100.0
+
+[node name="HealthBar" type="ProgressBar" parent="TopLeft"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 100.0
+show_percentage = false
+
+[node name="StatusEffects" type="HBoxContainer" parent="TopLeft"]
+layout_mode = 2
+
+[node name="TopRight" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="ObjectiveLabel" type="Label" parent="TopRight"]
+layout_mode = 2
+text = "Objective: Survive"
+horizontal_alignment = 2
+
+[node name="ObjectiveProgress" type="Label" parent="TopRight"]
+layout_mode = 2
+text = "0/5"
+horizontal_alignment = 2
+
+[node name="TopCenter" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="TimerLabel" type="Label" parent="TopCenter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "05:00"
+horizontal_alignment = 1
+
+[node name="BottomCenter" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="InteractionPrompt" type="Label" parent="BottomCenter"]
+visible = false
+layout_mode = 2
+text = "Tekan untuk mengambil"
+horizontal_alignment = 1
+
+[node name="ExtractionBar" type="ProgressBar" parent="BottomCenter"]
+visible = false
+layout_mode = 2
+
+[node name="BottomRight" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="AbilityInfo" type="Label" parent="BottomRight"]
+layout_mode = 2
+text = "Ability: Sprint (Ready)"
+horizontal_alignment = 2
+
+[node name="WeaponInfo" type="Label" parent="BottomRight"]
+layout_mode = 2
+text = "Weapon: Flashlight"
+horizontal_alignment = 2
+
+[node name="WeaponDurability" type="ProgressBar" parent="BottomRight"]
+layout_mode = 2
+value = 100.0
+show_percentage = false

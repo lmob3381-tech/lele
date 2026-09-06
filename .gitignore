@@ -1,0 +1,27 @@
+# Godot 4.x
+.godot/
+
+# Build output
+build/
+*.apk
+*.aab
+
+# Keystore (jangan commit ke repo publik)
+*.keystore
+*.jks
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Export
+*.pck
+*.zip

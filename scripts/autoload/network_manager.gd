@@ -2,7 +2,7 @@ extends Node
 
 ## Singleton for multiplayer networking using ENet
 
-const DEFAULT_PORT: int = 8910
+const DEFAULT_PORT: int = 10403
 const MAX_CLIENTS: int = 4
 const CONNECTION_TIMEOUT: float = 12.0
 const MAX_RECONNECT_ATTEMPTS: int = 3
@@ -32,7 +32,7 @@ func _ready() -> void:
 	timeout_timer.timeout.connect(_on_timeout)
 	add_child(timeout_timer)
 
-## Connects to a server given an address (e.g., 192.168.1.100:8910)
+## Connects to a server given an address (e.g., 192.168.1.100:10403)
 func connect_to_server(address: String) -> void:
 	var addr_info: Dictionary = _validate_address(address)
 	if not addr_info.is_valid:

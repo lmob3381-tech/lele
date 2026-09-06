@@ -1,7 +1,7 @@
 extends Node
 class_name ServerMain
 
-const PORT: int = 10402
+const PORT: int = 10403
 const MAX_CLIENTS: int = 100
 
 var peer: ENetMultiplayerPeer

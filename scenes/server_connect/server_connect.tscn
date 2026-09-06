@@ -41,7 +41,7 @@ horizontal_alignment = 1
 
 [node name="AddressInput" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "IP:PORT (e.g. 192.168.1.100:8910)"
+placeholder_text = "IP:PORT (e.g. 192.168.1.100:10403)"
 alignment = 1
 
 [node name="ConnectButton" type="Button" parent="CenterContainer/VBoxContainer"]

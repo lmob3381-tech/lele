@@ -18,7 +18,7 @@ RUN wget -q https://github.com/godotengine/godot/releases/download/${GODOT_VERSI
 WORKDIR /app
 COPY build/server.pck /app/server.pck
 
-EXPOSE 10402/udp
-EXPOSE 10402/tcp
+EXPOSE 10403/udp
+EXPOSE 10403/tcp
 
 CMD ["godot", "--headless", "--main-pack", "server.pck", "--server"]

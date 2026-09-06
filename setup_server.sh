@@ -57,9 +57,9 @@ WantedBy=multi-user.target
 EOF
 
 # 5. Konfigurasi Firewall
-echo "[5/6] Membuka port 10402 (TCP/UDP) di firewall..."
-sudo ufw allow 10402/tcp > /dev/null
-sudo ufw allow 10402/udp > /dev/null
+echo "[5/6] Membuka port 10403 (TCP/UDP) di firewall..."
+sudo ufw allow 10403/tcp > /dev/null
+sudo ufw allow 10403/udp > /dev/null
 
 # 6. Start Service
 echo "[6/6] Menyalakan game server..."

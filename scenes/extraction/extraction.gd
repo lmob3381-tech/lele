@@ -22,8 +22,8 @@ var current_score: float = 0.0
 var target_score: float = 0.0
 
 func _ready() -> void:
-	if GlobalData and GlobalData.has("mission_result"):
-		mission_result = GlobalData.get("mission_result")
+	if GameManager and GameManager.last_mission_result.size() > 0:
+		mission_result = GameManager.last_mission_result
 		
 	if mission_result.get("success", false):
 		result_title.text = "MISI SELESAI"
@@ -54,3 +54,4 @@ func _on_return_pressed() -> void:
 		get_node("/root/SceneManager").change_scene(get_node("/root/SceneManager").LOBBY)
 	else:
 		get_tree().change_scene_to_file("res://scenes/lobby/lobby.tscn")
+

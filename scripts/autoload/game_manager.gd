@@ -60,3 +60,5 @@ func report_error(message: String) -> void:
 
 func _get_state_name(state: GameState) -> String:
 	return GameState.keys()[state]
+
+var last_mission_result: Dictionary = {}

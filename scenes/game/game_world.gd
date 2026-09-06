@@ -56,32 +56,31 @@ func _on_extraction_entered(body: Node3D) -> void:
 
 func _on_mission_completed(score: int) -> void:
 	game_active = false
-	if not GlobalData:
-		var gd = Node.new()
-		gd.name = "GlobalData"
-		get_tree().root.add_child(gd)
-		
-	# Store result globally
-	if get_tree().root.has_node("GlobalData"):
-		get_tree().root.get_node("GlobalData").set("mission_result", {
+	if GameManager:
+		GameManager.last_mission_result = {
 			"success": true,
 			"time_survived": time_survived,
 			"score": score
-		})
-		
+		}
+	
 	if has_node("/root/SceneManager"):
 		get_node("/root/SceneManager").change_scene(get_node("/root/SceneManager").EXTRACTION)
 	else:
 		get_tree().change_scene_to_file("res://scenes/extraction/extraction.tscn")
 
+
+
+
+
+
 func _on_mission_failed(reason: String) -> void:
 	game_active = false
-	if get_tree().root.has_node("GlobalData"):
-		get_tree().root.get_node("GlobalData").set("mission_result", {
+	if GameManager:
+		GameManager.last_mission_result = {
 			"success": false,
 			"time_survived": time_survived,
 			"score": 0
-		})
+		}
 	
 	if has_node("/root/SceneManager"):
 		get_node("/root/SceneManager").change_scene(get_node("/root/SceneManager").EXTRACTION)
